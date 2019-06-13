@@ -11,7 +11,18 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  projectPath: 'WebApplication2/WebApplication2.csproj'
+
+
+
+#steps:
+#- script: dotnet build --configuration $(buildConfiguration)
+#  displayName: 'dotnet build $(buildConfiguration)'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- task: DotNetCoreCLI@2
   displayName: 'dotnet build $(buildConfiguration)'
+  inputs:
+    command: build
+    projects: '$(projectPath)'
+    arguments: '--configuration $(buildConfiguration)' # Update this to match your need
