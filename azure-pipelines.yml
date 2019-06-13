@@ -27,4 +27,8 @@ steps:
     projects: '$(projectPath)'
     arguments: '--configuration $(buildConfiguration)' # Update this to match your need
 
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+    
 - task: PublishBuildArtifacts@1
